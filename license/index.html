@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Status</title>
+
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                     Roboto, Helvetica, Arial, sans-serif;
+        background: #f6f7f9;
+        color: #171717;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 560px;
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        margin-bottom: 24px;
+    }
+
+    .success-icon {
+        background: #e8f7ed;
+        color: #16803c;
+    }
+
+    .fail-icon {
+        background: #fdecec;
+        color: #c62828;
+    }
+
+    h1 {
+        margin: 0 0 10px;
+        font-size: 28px;
+        line-height: 1.2;
+    }
+
+    .description {
+        color: #666;
+        line-height: 1.6;
+        margin: 0 0 30px;
+    }
+
+    .license-section {
+        margin-bottom: 28px;
+    }
+
+    .label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 8px;
+    }
+
+    .license-box {
+        background: #f0f7ff;
+        border: 2px solid #b8d9ff;
+        border-radius: 10px;
+        padding: 16px;
+        text-align: center;
+    }
+
+    .license-key {
+        display: block;
+        font-family: monospace;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        overflow-wrap: anywhere;
+        color: #171717;
+        user-select: all;
+    }
+
+    .copy-license {
+        width: 100%;
+        border: 0;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin-top: 12px;
+        background: #171717;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .copy-license:hover {
+        opacity: 0.85;
+    }
+
+    .copy-license:active {
+        transform: translateY(1px);
+    }
+
+    .info {
+        margin-bottom: 20px;
+    }
+
+    .value-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #f6f7f9;
+        border: 1px solid #e5e5e5;
+        border-radius: 9px;
+        padding: 11px 12px;
+    }
+
+    .value {
+        flex: 1;
+        min-width: 0;
+        overflow-wrap: anywhere;
+        font-family: monospace;
+        font-size: 14px;
+    }
+
+    .copy-btn {
+        border: 1px solid #ddd;
+        background: white;
+        border-radius: 7px;
+        padding: 7px 11px;
+        cursor: pointer;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .copy-btn:hover {
+        background: #f0f0f0;
+    }
+
+    .note {
+        margin-top: 24px;
+        padding: 14px 16px;
+        background: #f8f8f8;
+        border-radius: 9px;
+        color: #666;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .support {
+        margin-top: 28px;
+        padding-top: 22px;
+        border-top: 1px solid #eee;
+        color: #666;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .support a {
+        color: #171717;
+        font-weight: 600;
+    }
+
+    .try-again {
+        display: block;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        background: #171717;
+        color: white;
+        padding: 13px 18px;
+        border-radius: 9px;
+        font-weight: 600;
+        margin-top: 24px;
+    }
+
+    .try-again:hover {
+        opacity: 0.85;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    @media (max-width: 500px) {
+        .card {
+            padding: 28px 22px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .license-key {
+            font-size: 14px;
+        }
+    }
+</style>
+
+
+</head>
+
+<body>
+
+<div class="card">
+
+
+<!-- SUCCESS -->
+<div id="successPage" class="hidden">
+
+    <div class="icon success-icon">✓</div>
+
+    <h1>Payment successful 🎉</h1>
+
+    <p class="description">
+        Your purchase is complete. Your license key is ready.
+    </p>
+
+    <!-- LICENSE KEY -->
+    <div class="license-section">
+
+        <span class="label">Your License Key</span>
+
+        <div class="license-box">
+
+            <span id="licenseKey" class="license-key"></span>
+
+            <button
+                id="copyLicenseButton"
+                class="copy-license"
+                onclick="copyValue('licenseKey', this)">
+                Copy License Key
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- PAYMENT ID -->
+    <div class="info">
+
+        <span class="label">Payment ID</span>
+
+        <div class="value-row">
+            <span id="paymentId" class="value"></span>
+
+            <button
+                class="copy-btn"
+                onclick="copyValue('paymentId', this)">
+                Copy
+            </button>
+        </div>
+
+    </div>
+
+    <!-- EMAIL -->
+    <div class="info">
+
+        <span class="label">Email</span>
+
+        <div class="value-row">
+            <span id="successEmail" class="value"></span>
+        </div>
+
+    </div>
+
+    <div class="note">
+        <strong>Keep your license key safe.</strong><br>
+        You may need this key to activate the application again in the future.
+    </div>
+
+    <div class="support">
+        Need help with your license or activation?<br>
+        Contact us at
+        <a id="supportLinkSuccess" href="#">
+            support@example.com
+        </a>
+    </div>
+
+</div>
+
+
+<!-- FAILED -->
+<div id="failedPage" class="hidden">
+
+    <div class="icon fail-icon">!</div>
+
+    <h1>Payment wasn't completed</h1>
+
+    <p class="description">
+        We couldn't complete your payment. No license key was generated.
+        You can try the purchase again.
+    </p>
+
+    <!-- EMAIL ONLY -->
+    <div class="info">
+
+        <span class="label">Email</span>
+
+        <div class="value-row">
+            <span id="failedEmail" class="value"></span>
+        </div>
+
+    </div>
+
+    <a id="tryAgainButton"
+       href="#"
+       class="try-again">
+        Try Again
+    </a>
+
+    <div class="support">
+        If you believe this is an error, please contact us at
+        <a id="supportLinkFailed" href="#">
+            support@example.com
+        </a>
+    </div>
+
+</div>
+
+
+<!-- INVALID -->
+<div id="invalidPage" class="hidden">
+
+    <div class="icon fail-icon">!</div>
+
+    <h1>Something went wrong</h1>
+
+    <p class="description">
+        We couldn't determine the payment status.
+        Please return to checkout and try again.
+    </p>
+
+    <a id="invalidTryAgain"
+       href="#"
+       class="try-again">
+        Try Again
+    </a>
+
+    <div class="support">
+        Need help?
+        <a id="supportLinkInvalid" href="#">
+            support@example.com
+        </a>
+    </div>
+
+</div>
+
+
+</div>
+
+<script>
+
+    /*
+     * ============================
+     * CONFIGURATION
+     * ============================
+     */
+    
+    const currentParams = window.location.search;
+
+    const SUPPORT_EMAIL = "support@example.com";
+    const PURCHASE_URL = "https://test.checkout.dodopayments.com/buy/pdt_0NmROOn3iZZjvAHxCItjr?quantity=1&showDiscounts=false" + currentParams;
+
+    /*
+     * ============================
+     * READ DODO PARAMETERS
+     * ============================
+     */
+
+    const params = new URLSearchParams(window.location.search);
+
+    const status = params.get("status");
+    const paymentId = params.get("payment_id");
+    const licenseKey = params.get("license_key");
+    const email = params.get("email");
+
+
+    /*
+     * ============================
+     * SUPPORT EMAIL
+     * ============================
+     */
+
+    function setupSupportLink(id) {
+
+        const link = document.getElementById(id);
+
+        if (link) {
+            link.textContent = SUPPORT_EMAIL;
+            link.href = "mailto:" + SUPPORT_EMAIL;
+        }
+    }
+
+    setupSupportLink("supportLinkSuccess");
+    setupSupportLink("supportLinkFailed");
+    setupSupportLink("supportLinkInvalid");
+
+
+    /*
+     * ============================
+     * SUCCESS
+     * ============================
+     */
+
+    if (
+        status === "succeeded" &&
+        licenseKey &&
+        paymentId
+    ) {
+
+        document
+            .getElementById("successPage")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("licenseKey")
+            .textContent = licenseKey;
+
+        document
+            .getElementById("paymentId")
+            .textContent = paymentId;
+
+        document
+            .getElementById("successEmail")
+            .textContent = email || "Not provided";
+    }
+
+
+    /*
+     * ============================
+     * FAILED
+     * ============================
+     */
+
+    else if (status === "failed") {
+
+        document
+            .getElementById("failedPage")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("failedEmail")
+            .textContent = email || "Not provided";
+
+        document
+            .getElementById("tryAgainButton")
+            .href = PURCHASE_URL;
+    }
+
+
+    /*
+     * ============================
+     * INVALID / UNKNOWN
+     * ============================
+     */
+
+    else {
+
+        document
+            .getElementById("invalidPage")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("invalidTryAgain")
+            .href = PURCHASE_URL;
+    }
+
+
+    /*
+     * ============================
+     * COPY
+     * ============================
+     */
+
+    async function copyValue(elementId, button) {
+
+        const element = document.getElementById(elementId);
+        const value = element.textContent;
+
+        try {
+
+            await navigator.clipboard.writeText(value);
+
+        } catch (error) {
+
+            const textarea = document.createElement("textarea");
+
+            textarea.value = value;
+            textarea.style.position = "fixed";
+            textarea.style.opacity = "0";
+
+            document.body.appendChild(textarea);
+
+            textarea.select();
+            document.execCommand("copy");
+
+            textarea.remove();
+        }
+
+        const originalText = button.textContent;
+
+        button.textContent =
+            elementId === "licenseKey"
+                ? "✓ License Key Copied!"
+                : "Copied!";
+
+        setTimeout(() => {
+            button.textContent = originalText;
+        }, 1800);
+    }
+
+</script>
+
+</body>
+</html>
