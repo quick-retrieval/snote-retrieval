@@ -1,0 +1,569 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Data Extraction Disclaimer — SNote Retrieval</title>
+    <meta name="description"
+        content="Data Extraction Disclaimer for SNote Retrieval by Quick Retrieval. Learn about extraction limitations, compatibility, previews, and user responsibilities.">
+
+    <style>
+        :root {
+            --bg: #f7f8fa;
+            --surface: #ffffff;
+            --text: #17181a;
+            --muted: #666b73;
+            --border: #e7e8eb;
+            --accent: #111827;
+            --link: #2563eb;
+            --max-width: 860px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+            font-size: 16px;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        main {
+            width: min(calc(100% - 40px), var(--max-width));
+            margin: 0 auto;
+            padding: 64px 0 90px;
+        }
+
+        .header {
+            margin-bottom: 38px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 650;
+            letter-spacing: -0.01em;
+        }
+
+        .brand:hover {
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            object-fit: contain;
+            display: block;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(34px, 5vw, 48px);
+            line-height: 1.1;
+            letter-spacing: -0.045em;
+            font-weight: 750;
+        }
+
+        .updated {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .legal-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0 0 40px;
+            padding: 6px;
+            background: #eef0f2;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .legal-nav a {
+            padding: 7px 11px;
+            border-radius: 8px;
+            color: #5f646c;
+            text-decoration: none;
+            font-size: 13px;
+            line-height: 1.3;
+            font-weight: 550;
+            transition:
+                background 0.15s ease,
+                color 0.15s ease;
+        }
+
+        .legal-nav a:hover {
+            background: #ffffff;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .legal-nav a.active {
+            background: #ffffff;
+            color: var(--text);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+
+        .intro {
+            margin-bottom: 42px;
+            padding: 28px 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        section {
+            margin-bottom: 46px;
+        }
+
+        h2 {
+            margin: 0 0 18px;
+            font-size: 23px;
+            line-height: 1.3;
+            letter-spacing: -0.025em;
+            font-weight: 700;
+        }
+
+        p {
+            margin: 0 0 17px;
+        }
+
+        ul {
+            margin: 12px 0 20px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 6px 0;
+            padding-left: 4px;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            font-weight: 650;
+        }
+
+        .highlight {
+            margin: 22px 0;
+            padding: 20px 22px;
+            background: #f1f3f5;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .highlight strong {
+            display: block;
+        }
+
+        .contact {
+            padding: 26px 28px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .summary-note {
+            margin-top: 50px;
+            padding: 28px 30px;
+            background: #111827;
+            color: #ffffff;
+            border-radius: 16px;
+        }
+
+        .summary-note h2 {
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .summary-note p {
+            margin-bottom: 12px;
+            color: #d9dce1;
+        }
+
+        .summary-note p:last-child {
+            margin-bottom: 0;
+        }
+
+        .summary-note strong {
+            color: #ffffff;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        @media (max-width: 640px) {
+            main {
+                width: min(calc(100% - 28px), var(--max-width));
+                padding: 42px 0 70px;
+            }
+
+            .header {
+                margin-bottom: 30px;
+            }
+
+            .legal-nav {
+                gap: 4px;
+                padding: 5px;
+            }
+
+            .legal-nav a {
+                font-size: 12px;
+                padding: 7px 9px;
+            }
+
+            .intro,
+            .contact,
+            .summary-note {
+                padding: 22px;
+                border-radius: 14px;
+            }
+
+            section {
+                margin-bottom: 38px;
+            }
+
+            h2 {
+                font-size: 21px;
+            }
+
+            body {
+                font-size: 15.5px;
+                line-height: 1.7;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<main>
+
+<header class="header">
+
+    <a class="brand" href="/">
+        <img src="/assets/logo.png" alt="SNote Retrieval" class="brand-logo">
+        <span>SNote Retrieval</span>
+    </a>
+
+    <h1>Data Extraction Disclaimer</h1>
+
+    <p class="updated">
+        Last updated: September 3, 2026
+    </p>
+
+</header>
+
+
+<nav class="legal-nav" aria-label="Legal pages">
+
+    <a href="/legal/privacy">
+        Privacy
+    </a>
+
+    <a href="/legal/refund">
+        Refund
+    </a>
+
+    <a href="/legal/data-extraction-disclaimer" class="active">
+        Data Extraction
+    </a>
+
+    <a href="/legal/third-party-disclaimer">
+        Third-Party &amp; Trademark
+    </a>
+
+</nav>
+
+
+<div class="intro">
+
+    <p>
+        This Data Extraction Disclaimer explains the limitations and conditions
+        that may apply when using <strong>SNote Retrieval</strong> to extract
+        and export data from Samsung Notes.
+    </p>
+
+    <p>
+        SNote Retrieval is an independent extraction and export tool. Its ability
+        to extract data depends on the structure, accessibility, and condition
+        of the data available to the application.
+    </p>
+
+    <p>
+        The software is designed to provide a preview of the extraction result
+        before export so that users can review what SNote Retrieval is able to
+        extract.
+    </p>
+
+</div>
+
+
+<section>
+
+    <h2>1. Extraction Limitations</h2>
+
+    <p>
+        The ability of SNote Retrieval to extract data may depend on the version,
+        structure, format, and condition of the Samsung Notes data available to
+        the application.
+    </p>
+
+    <p>
+        SNote Retrieval does not guarantee that all Samsung Notes data can be
+        extracted in every circumstance or that extraction will be available
+        for every version or configuration of Samsung Notes.
+    </p>
+
+    <p>
+        The software may be unable to extract certain data where the relevant
+        data is unavailable, inaccessible, damaged, changed, or stored in a
+        format that the application does not support.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>2. Compatibility With Samsung Notes</h2>
+
+    <p>
+        Samsung may change Samsung Notes, its data structures, storage methods,
+        file formats, or related technologies over time.
+    </p>
+
+    <p>
+        Such changes may affect the ability of SNote Retrieval to access or
+        extract Samsung Notes data.
+    </p>
+
+    <div class="highlight">
+
+        <strong>
+            Future compatibility is not guaranteed.
+        </strong>
+
+        <p>
+            SNote Retrieval does not guarantee compatibility with every future
+            version or configuration of Samsung Notes.
+        </p>
+
+    </div>
+
+    <p>
+        Changes made by third parties may limit or prevent extraction without
+        notice and may require changes to SNote Retrieval before extraction
+        can be supported again.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>3. Preview and Export</h2>
+
+    <p>
+        SNote Retrieval provides a preview before the user proceeds with an
+        export.
+    </p>
+
+    <p>
+        The preview is intended to show the data that SNote Retrieval is able
+        to extract and that will be exported at the time of the preview.
+    </p>
+
+    <p>
+        Users should review the preview carefully before proceeding with an
+        export or relying on the resulting files.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>4. Data Integrity and Availability</h2>
+
+    <p>
+        SNote Retrieval can only extract data that is accessible to the
+        application and supported by its extraction capabilities.
+    </p>
+
+    <p>
+        The software does not guarantee recovery of data that is already
+        deleted, corrupted, inaccessible, unavailable, or otherwise outside
+        the application's supported extraction capabilities.
+    </p>
+
+    <p>
+        Extraction results may also depend on the condition and structure of
+        the source data.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>5. User Responsibility and Backups</h2>
+
+    <p>
+        Users are responsible for maintaining appropriate backups of their
+        original Samsung Notes data and other important information.
+    </p>
+
+    <p>
+        SNote Retrieval should not be considered a replacement for maintaining
+        independent backups.
+    </p>
+
+    <p>
+        Users should ensure that they have access to their original data before
+        relying on an exported copy.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>6. Independent Software</h2>
+
+    <p>
+        SNote Retrieval is an independent third-party application. It is not
+        developed, maintained, endorsed, sponsored, or authorized by Samsung
+        Electronics Co., Ltd.
+    </p>
+
+    <p>
+        References to Samsung Notes are used only to identify the software and
+        data with which SNote Retrieval is designed to work.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>7. Contact</h2>
+
+    <div class="contact">
+
+        <p>
+            If you have questions regarding this disclaimer or the extraction
+            process, please contact us at:
+        </p>
+
+        <p>
+            <strong>Quick Retrieval</strong><br>
+            Mumbai, Maharashtra, India
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            <a href="mailto:SNote.Retrieval@proton.me">
+                SNote.Retrieval@proton.me
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <h2>8. Changes to This Disclaimer</h2>
+
+    <p>
+        We may update this Data Extraction Disclaimer from time to time.
+        Any updated version will be published with a revised
+        "Last Updated" date.
+    </p>
+
+</section>
+
+
+<div class="summary-note">
+
+    <h2>In Summary</h2>
+
+    <p>
+        <strong>
+            Please review the preview before exporting your data.
+        </strong>
+        The preview is intended to show what SNote Retrieval is able to
+        extract and export at the time of use.
+    </p>
+
+    <p>
+        Extraction capabilities may be affected by the structure, condition,
+        and accessibility of your data, as well as changes made to
+        Samsung Notes or related technologies.
+    </p>
+
+    <p>
+        We recommend maintaining an independent backup of your original data.
+    </p>
+
+</div>
+
+
+<footer>
+
+    © 2026 Quick Retrieval. All rights reserved.
+
+</footer>
+
+
+</main>
+
+</body>
+</html>
+

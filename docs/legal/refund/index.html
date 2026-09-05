@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Refund Policy — SNote Retrieval</title>
+
+    <meta name="description"
+        content="Refund Policy for SNote Retrieval by Quick Retrieval. Learn about purchases, refunds, preview functionality, and applicable consumer rights.">
+
+    <style>
+        :root {
+            --bg: #f7f8fa;
+            --surface: #ffffff;
+            --text: #17181a;
+            --muted: #666b73;
+            --border: #e7e8eb;
+            --accent: #111827;
+            --link: #2563eb;
+            --max-width: 860px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+            font-size: 16px;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        main {
+            width: min(calc(100% - 40px), var(--max-width));
+            margin: 0 auto;
+            padding: 64px 0 90px;
+        }
+
+        .header {
+            margin-bottom: 38px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 28px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 650;
+            letter-spacing: -0.01em;
+        }
+
+        .brand:hover {
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            object-fit: contain;
+            display: block;
+        }
+        
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(34px, 5vw, 48px);
+            line-height: 1.1;
+            letter-spacing: -0.045em;
+            font-weight: 750;
+        }
+
+        .updated {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .legal-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0 0 40px;
+            padding: 6px;
+            background: #eef0f2;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .legal-nav a {
+            padding: 7px 11px;
+            border-radius: 8px;
+            color: #5f646c;
+            text-decoration: none;
+            font-size: 13px;
+            line-height: 1.3;
+            font-weight: 550;
+            transition:
+                background 0.15s ease,
+                color 0.15s ease;
+        }
+
+        .legal-nav a:hover {
+            background: #ffffff;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .legal-nav a.active {
+            background: #ffffff;
+            color: var(--text);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+
+        .intro {
+            margin-bottom: 42px;
+            padding: 28px 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        section {
+            margin-bottom: 46px;
+        }
+
+        h2 {
+            margin: 0 0 18px;
+            font-size: 23px;
+            line-height: 1.3;
+            letter-spacing: -0.025em;
+            font-weight: 700;
+        }
+
+        h3 {
+            margin: 30px 0 10px;
+            font-size: 17px;
+            line-height: 1.4;
+            font-weight: 650;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            margin: 0 0 17px;
+        }
+
+        ul {
+            margin: 12px 0 20px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin: 6px 0;
+            padding-left: 4px;
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            font-weight: 650;
+        }
+
+        .highlight {
+            margin: 22px 0;
+            padding: 20px 22px;
+            background: #f1f3f5;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .highlight strong {
+            display: block;
+        }
+
+        .contact {
+            padding: 26px 28px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .refund-note {
+            margin-top: 50px;
+            padding: 28px 30px;
+            background: #111827;
+            color: #ffffff;
+            border-radius: 16px;
+        }
+
+        .refund-note h2 {
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .refund-note p {
+            margin-bottom: 0;
+            color: #d9dce1;
+        }
+
+        .refund-note strong {
+            color: #ffffff;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        @media (max-width: 640px) {
+            main {
+                width: min(calc(100% - 28px), var(--max-width));
+                padding: 42px 0 70px;
+            }
+
+            .header {
+                margin-bottom: 30px;
+            }
+
+            .legal-nav {
+                gap: 4px;
+                padding: 5px;
+            }
+
+            .legal-nav a {
+                font-size: 12px;
+                padding: 7px 9px;
+            }
+
+            .intro,
+            .contact,
+            .refund-note {
+                padding: 22px;
+                border-radius: 14px;
+            }
+
+            section {
+                margin-bottom: 38px;
+            }
+
+            h2 {
+                font-size: 21px;
+            }
+
+            body {
+                font-size: 15.5px;
+                line-height: 1.7;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<main>
+
+<header class="header">
+
+    <a class="brand" href="/">
+        <img src="/assets/logo.png" alt="SNote Retrieval" class="brand-logo">
+        <span>SNote Retrieval</span>
+    </a>
+
+    <h1>Refund Policy</h1>
+
+    <p class="updated">
+        Last updated: September 3, 2026
+    </p>
+
+</header>
+
+
+<nav class="legal-nav" aria-label="Legal pages">
+
+    <a href="/legal/privacy">
+        Privacy
+    </a>
+
+    <a href="/legal/refund" class="active">
+        Refund
+    </a>
+
+    <a href="/legal/data-extraction-disclaimer">
+        Data Extraction
+    </a>
+
+    <a href="/legal/third-party-disclaimer">
+        Third-Party &amp; Trademark
+    </a>
+
+</nav>
+
+
+<div class="intro">
+
+    <p>
+        This Refund Policy explains how refunds are handled for
+        <strong>SNote Retrieval</strong>, a digital software product provided
+        by Quick Retrieval.
+    </p>
+
+    <p>
+        SNote Retrieval is provided as a
+        <strong>one-time purchase</strong> and is not a subscription.
+    </p>
+
+    <p>
+        We want users to be able to make an informed decision before purchasing.
+        SNote Retrieval therefore provides a preview of the extraction result
+        before payment.
+    </p>
+
+    <p>
+        The preview is generated from your Samsung Notes data and is intended to
+        show <strong>what SNote Retrieval will export</strong>.
+    </p>
+
+</div>
+
+
+<section>
+
+    <h2>1. Please Review the Preview Before Purchasing</h2>
+
+    <p>
+        We want you to have a clear opportunity to decide whether SNote Retrieval
+        is suitable for your needs before purchasing a license.
+    </p>
+
+    <p>
+        The preview is based on your actual Samsung Notes data. It is intended
+        to show the extraction result and the information that SNote Retrieval
+        will export.
+    </p>
+
+    <div class="highlight">
+
+        <strong>
+            Please review the preview carefully before purchasing.
+        </strong>
+
+        <p>
+            The preview is provided before payment so that you can see the
+            expected extraction result and decide whether the Product is
+            suitable for you.
+        </p>
+
+    </div>
+
+    <p>
+        Because users are given this opportunity to review the expected
+        extraction result before purchase, completed purchases are generally
+        non-refundable.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>2. No-Refund Policy</h2>
+
+    <p>
+        Except where a refund or other remedy is required by applicable law
+        or under the applicable terms of our payment provider, purchases of
+        SNote Retrieval are <strong>non-refundable</strong>.
+    </p>
+
+    <p>
+        This includes, for example:
+    </p>
+
+    <ul>
+
+        <li>
+            changing your mind after purchasing;
+        </li>
+
+        <li>
+            deciding that you no longer need the Product;
+        </li>
+
+        <li>
+            not using the license after purchase;
+        </li>
+
+        <li>
+            purchasing the Product without reviewing the available preview;
+        </li>
+
+        <li>
+            expecting SNote Retrieval to extract data that was not shown as
+            available for extraction in the preview; or
+        </li>
+
+        <li>
+            purchasing with expectations about future compatibility or
+            extraction capabilities that are not represented by the Product
+            or its preview.
+        </li>
+
+    </ul>
+
+    <p>
+        This policy is not intended to prevent legitimate consumer rights.
+        It reflects that users are given an opportunity to review the actual
+        expected extraction result before deciding to purchase.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>3. Extraction and Future Compatibility</h2>
+
+    <p>
+        SNote Retrieval depends on the structure and accessibility of
+        Samsung Notes data.
+    </p>
+
+    <p>
+        Samsung may change Samsung Notes, its data structures, file formats,
+        storage methods, or related software in future updates. Such changes
+        may affect the ability of SNote Retrieval to extract data.
+    </p>
+
+    <p>
+        Accordingly, we do not guarantee that SNote Retrieval will remain
+        compatible with every future version of Samsung Notes or that its
+        extraction capabilities will remain unchanged indefinitely.
+    </p>
+
+    <p>
+        A purchase of SNote Retrieval should therefore be understood as a
+        purchase of the Product as it is available and represented at the
+        time of purchase, rather than a guarantee of future extraction
+        compatibility.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>4. License Delivery</h2>
+
+    <p>
+        After a successful purchase, your license key is provided through
+        the purchase flow and is also sent to the email address associated
+        with the purchase.
+    </p>
+
+    <p>
+        The license key must be manually entered into SNote Retrieval
+        to activate the Product.
+    </p>
+
+    <p>
+        Failure to use the license after purchase does not, by itself,
+        create an entitlement to a refund.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>5. Legal Consumer Rights</h2>
+
+    <p>
+        Nothing in this Refund Policy is intended to exclude, restrict,
+        or waive any consumer right, statutory guarantee, or other remedy
+        that cannot legally be excluded or waived under applicable law.
+    </p>
+
+    <p>
+        If the law applicable to your purchase provides you with a mandatory
+        right to a refund, cancellation, replacement, repair, or another
+        remedy, that right remains unaffected.
+    </p>
+
+    <p>
+        This Refund Policy should therefore be read subject to the mandatory
+        laws applicable to you.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>6. Dodo Payments Terms</h2>
+
+    <p>
+        Payments for SNote Retrieval are processed through
+        <strong>Dodo Payments</strong>, which acts as the merchant of record
+        for the transaction.
+    </p>
+
+    <p>
+        Your purchase is also subject to the applicable
+        <strong>Dodo Payments Buyer Terms</strong>, including provisions
+        concerning payments, refunds, digital products, disputes, and
+        consumer rights.
+    </p>
+
+    <p>
+        Where the applicable Dodo Payments terms provide a right or remedy
+        that applies to your transaction, those terms may apply independently
+        of this Refund Policy.
+    </p>
+
+    <p>
+        You can review the applicable Dodo Payments Buyer Terms here:
+    </p>
+
+    <p>
+        <a href="https://dodopayments.com/legal/buyer-terms"
+           target="_blank"
+           rel="noopener noreferrer">
+            Dodo Payments Buyer Terms
+        </a>
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>7. Payment Disputes and Unauthorized Transactions</h2>
+
+    <p>
+        If you believe that a payment was made without your authorization
+        or that a payment was processed incorrectly, please contact us at
+        <a href="mailto:SNote.Retrieval@proton.me">
+            SNote.Retrieval@proton.me
+        </a>
+        or Dodo Payments so that the matter can be reviewed.
+    </p>
+
+    <p>
+        Nothing in this policy prevents you from exercising rights available
+        to you through your bank, card issuer, payment provider, or
+        applicable law.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>8. Contact</h2>
+
+    <div class="contact">
+
+        <p>
+            If you have a question about a purchase or this Refund Policy,
+            please contact us at:
+        </p>
+
+        <p>
+            <strong>Quick Retrieval</strong><br>
+            Mumbai, Maharashtra, India
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            <a href="mailto:SNote.Retrieval@proton.me">
+                SNote.Retrieval@proton.me
+            </a>
+        </p>
+
+        <p>
+            When contacting us about a purchase, please provide your order
+            information where reasonably necessary to identify the transaction.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <h2>9. Changes to This Policy</h2>
+
+    <p>
+        We may update this Refund Policy from time to time. Any updated
+        version will be published with a revised "Last Updated" date.
+    </p>
+
+    <p>
+        Changes will not affect rights that cannot legally be excluded
+        or modified.
+    </p>
+
+</section>
+
+
+<div class="refund-note">
+
+    <h2>In Summary</h2>
+
+    <p>
+        <strong>
+            Please review the preview before purchasing.
+        </strong>
+        The preview is intended to show what SNote Retrieval will export
+        from your Samsung Notes data.
+    </p>
+
+    <p>
+        Because you can review the expected extraction result before
+        purchasing, <strong>purchases are generally non-refundable</strong>,
+        subject to applicable law and the applicable Dodo Payments
+        Buyer Terms.
+    </p>
+
+    <p>
+        We believe this approach gives you a clear opportunity to decide
+        whether SNote Retrieval is right for you before you spend money.
+    </p>
+
+    <p>
+        For questions regarding purchases or this Refund Policy, contact
+        <strong>SNote.Retrieval@proton.me</strong>.
+    </p>
+
+</div>
+
+
+<footer>
+
+    © 2026 Quick Retrieval. All rights reserved.
+
+</footer>
+
+
+</main>
+
+</body>
+
+</html>

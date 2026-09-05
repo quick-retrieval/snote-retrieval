@@ -1,0 +1,2444 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>SNote Retrieval — Export Samsung Notes with Folders Preserved</title>
+
+<meta name="description"
+      content="Export your Samsung Notes with your existing folders and nested folders preserved. Preview your export for free before purchasing. Windows only.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --bg: #fafafa;
+        --surface: #ffffff;
+        --surface-soft: #f5f5f6;
+        --surface-dark: #18181b;
+        --surface-dark-soft: #232326;
+
+        --text: #18181b;
+        --text-soft: #52525b;
+        --muted: #71717a;
+        --border: #e4e4e7;
+        --border-dark: #3f3f46;
+
+        --accent: #18181b;
+        --accent-hover: #27272a;
+
+        --radius-sm: 10px;
+        --radius: 16px;
+        --radius-lg: 22px;
+        --radius-xl: 28px;
+
+        --max-width: 1120px;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    button,
+    a {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+        width: min(calc(100% - 40px), var(--max-width));
+        margin: 0 auto;
+    }
+
+    /* =========================
+       ICON SYSTEM
+    ========================= */
+
+    .icon {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 auto;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+    }
+
+    .icon-sm {
+        width: 16px;
+        height: 16px;
+    }
+
+    .icon-lg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .icon-xl {
+        width: 26px;
+        height: 26px;
+    }
+
+    .icon-fill {
+        fill: currentColor;
+        stroke: none;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: 72px;
+        background: rgba(250, 250, 250, 0.88);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(228, 228, 231, 0.8);
+    }
+
+    .nav-inner {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        font-weight: 750;
+        letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+        width: 55px;
+        height: 55px;
+        border-radius: 10px;
+        overflow: hidden;
+        /* border: 1px solid black; */
+        /* rest of your styles */
+    }
+
+    .brand-mark img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+        transform: scale(1.3);
+        filter: grayscale(100%);
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        font-size: 13px;
+        font-weight: 550;
+        color: var(--text-soft);
+    }
+
+    .nav-links a:not(.nav-cta) {
+        transition: color .2s ease;
+    }
+
+    .nav-links a:not(.nav-cta):hover {
+        color: var(--text);
+    }
+
+    .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--text);
+        color: white !important;
+        padding: 10px 15px;
+        border-radius: 10px;
+        font-weight: 650;
+        transition: .2s ease;
+    }
+
+    .nav-cta:hover {
+        background: var(--accent-hover);
+        transform: translateY(-1px);
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+        padding: 105px 0 90px;
+        text-align: center;
+    }
+
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 7px 12px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 650;
+        color: var(--text-soft);
+        margin-bottom: 24px;
+        box-shadow: 0 2px 8px rgba(0,0,0,.025);
+    }
+
+    .eyebrow-icon {
+        width: 18px;
+        height: 18px;
+        display: grid;
+        place-items: center;
+        color: var(--text);
+    }
+
+    .windows-mark {
+        width: 17px;
+        height: 17px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 2px;
+        transform: skewY(-2deg);
+    }
+
+    .windows-mark span {
+        background: currentColor;
+        border-radius: 1px;
+    }
+
+    .hero h1 {
+        max-width: 880px;
+        margin: 0 auto;
+        font-size: clamp(43px, 6vw, 72px);
+        line-height: 1.01;
+        letter-spacing: -0.068em;
+        font-weight: 800;
+    }
+
+    .hero h1 span {
+        color: var(--muted);
+    }
+
+    .hero p {
+        max-width: 650px;
+        margin: 26px auto 0;
+        font-size: 18px;
+        line-height: 1.7;
+        color: var(--text-soft);
+    }
+
+    .hero-actions {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 34px;
+    }
+
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-height: 48px;
+        padding: 0 20px;
+        border-radius: 11px;
+        font-size: 13px;
+        font-weight: 700;
+        transition: .2s ease;
+    }
+
+    .button-primary {
+        background: var(--text);
+        color: white;
+        box-shadow: 0 5px 14px rgba(0,0,0,.10);
+    }
+
+    .button-primary:hover {
+        background: var(--accent-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 18px rgba(0,0,0,.13);
+    }
+
+    .button-secondary {
+        background: white;
+        border: 1px solid var(--border);
+    }
+
+    .button-secondary:hover {
+        border-color: #a1a1aa;
+        transform: translateY(-1px);
+    }
+
+    .hero-note {
+        margin-top: 17px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--muted);
+        font-size: 12px;
+    }
+
+    .hero-image {
+        margin: 65px auto 0;
+        max-width: 940px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: white;
+        padding: 8px;
+        box-shadow:
+            0 30px 70px rgba(0,0,0,.08),
+            0 5px 20px rgba(0,0,0,.04);
+    }
+
+    .hero-image img {
+        width: 100%;
+        border-radius: 11px;
+    }
+
+    /* =========================
+       INDEPENDENCE
+    ========================= */
+
+    .independence {
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        background: #fff;
+    }
+
+    .independence-inner {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-align: center;
+        color: var(--text-soft);
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .notice-icon {
+        width: 18px;
+        height: 18px;
+        color: #52525b;
+    }
+
+    .independence strong {
+        color: var(--text);
+    }
+
+    /* =========================
+       GENERAL
+    ========================= */
+
+    section {
+        padding: 110px 0;
+    }
+
+    .section-header {
+        max-width: 680px;
+        margin-bottom: 55px;
+    }
+
+    .section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        font-size: 10px;
+        font-weight: 800;
+        color: var(--muted);
+        margin-bottom: 13px;
+    }
+
+    .section-label::before {
+        content: "";
+        width: 16px;
+        height: 1px;
+        background: #a1a1aa;
+    }
+
+    .section-header h2 {
+        font-size: clamp(32px, 4vw, 48px);
+        line-height: 1.08;
+        letter-spacing: -0.055em;
+        margin-bottom: 18px;
+    }
+
+    .section-header p {
+        font-size: 16px;
+        color: var(--text-soft);
+        line-height: 1.75;
+    }
+
+    /* =========================
+       FOLDER
+    ========================= */
+
+    .folder-section {
+        background: white;
+    }
+
+    .folder-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+        align-items: center;
+    }
+
+    .folder-content h2 {
+        font-size: clamp(32px, 4vw, 48px);
+        line-height: 1.08;
+        letter-spacing: -0.055em;
+        margin-bottom: 20px;
+    }
+
+    .folder-content p {
+        color: var(--text-soft);
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 22px;
+    }
+
+    .folder-points {
+        display: grid;
+        gap: 12px;
+        margin-top: 26px;
+    }
+
+    .folder-point {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .check {
+        flex: 0 0 auto;
+        width: 25px;
+        height: 25px;
+        border-radius: 8px;
+        background: var(--surface-soft);
+        color: var(--text);
+        display: grid;
+        place-items: center;
+    }
+
+    .check .icon {
+        width: 14px;
+        height: 14px;
+        stroke-width: 2.2;
+    }
+
+    .folder-visual {
+        background: var(--surface-soft);
+        border: 1px solid #eeeeef;
+        border-radius: var(--radius-lg);
+        padding: 30px;
+    }
+
+    .folder-visual-inner {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        padding: 24px;
+        box-shadow: 0 15px 35px rgba(0,0,0,.05);
+    }
+
+    .tree-title {
+        font-size: 11px;
+        font-weight: 750;
+        color: var(--muted);
+        margin-bottom: 17px;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+    }
+
+    .tree {
+        font-size: 13px;
+        line-height: 2.3;
+    }
+
+    .tree-row {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .tree .folder {
+        font-weight: 700;
+    }
+
+    .tree .folder .icon {
+        color: #52525b;
+    }
+
+    .tree .nested {
+        padding-left: 25px;
+        color: var(--text-soft);
+    }
+
+    .tree .note {
+        padding-left: 50px;
+        color: var(--muted);
+    }
+
+    /* =========================
+       STEPS
+    ========================= */
+
+    .steps {
+        display: grid;
+        gap: 120px;
+    }
+
+    .step {
+        display: grid;
+        grid-template-columns: .8fr 1.2fr;
+        gap: 70px;
+        align-items: center;
+    }
+
+    .step:nth-child(even) {
+        grid-template-columns: 1.2fr .8fr;
+    }
+
+    .step:nth-child(even) .step-copy {
+        order: 2;
+    }
+
+    .step-number {
+        width: 39px;
+        height: 39px;
+        border-radius: 10px;
+        background: var(--text);
+        color: white;
+        display: grid;
+        place-items: center;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .04em;
+        margin-bottom: 20px;
+    }
+
+    .step-copy h3 {
+        font-size: 28px;
+        letter-spacing: -0.045em;
+        margin-bottom: 13px;
+    }
+
+    .step-copy p {
+        color: var(--text-soft);
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .step-image {
+        background: var(--surface-soft);
+        padding: 12px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+    }
+
+    .step-image img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    /* =========================
+       PREVIEW
+    ========================= */
+
+    .preview-section {
+        background: var(--surface-dark);
+        color: white;
+    }
+
+    .preview-section .section-label {
+        color: #a1a1aa;
+    }
+
+    .preview-section .section-label::before {
+        background: #52525b;
+    }
+
+    .preview-section .section-header p {
+        color: #a1a1aa;
+    }
+
+    .preview-banner {
+        margin-top: 50px;
+        border: 1px solid var(--border-dark);
+        background: var(--surface-dark-soft);
+        border-radius: var(--radius);
+        padding: 28px;
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        gap: 18px;
+        align-items: center;
+    }
+
+    .preview-badge {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+        background: white;
+        color: var(--text);
+        display: grid;
+        place-items: center;
+    }
+
+    .preview-banner strong {
+        display: block;
+        font-size: 15px;
+        margin-bottom: 3px;
+    }
+
+    .preview-banner span {
+        color: #a1a1aa;
+        font-size: 13px;
+    }
+
+    /* =========================
+       EXTENSIONS
+    ========================= */
+
+    .extension-section {
+        background: white;
+    }
+
+    .extension-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .extension-copy h2 {
+        font-size: clamp(32px, 4vw, 46px);
+        line-height: 1.08;
+        letter-spacing: -0.055em;
+        margin-bottom: 18px;
+    }
+
+    .extension-copy p {
+        color: var(--text-soft);
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    .extension-example {
+        display: grid;
+        gap: 10px;
+    }
+
+    .file-card {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        padding: 17px 19px;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        background: var(--surface-soft);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px;
+    }
+
+    .file-card .icon {
+        color: var(--muted);
+    }
+
+    .arrow {
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        margin: 0 auto;
+        color: var(--muted);
+    }
+
+    .arrow .icon {
+        width: 15px;
+        height: 15px;
+    }
+
+    .extension-note {
+        margin-top: 8px;
+        font-size: 12px;
+        color: var(--muted);
+        text-align: center;
+    }
+
+    /* =========================
+       LICENSE
+    ========================= */
+
+    .license-section {
+        background: var(--surface-soft);
+    }
+
+    .license-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .license-copy h2 {
+        font-size: clamp(32px, 4vw, 46px);
+        line-height: 1.08;
+        letter-spacing: -0.055em;
+        margin-bottom: 18px;
+    }
+
+    .license-copy p {
+        color: var(--text-soft);
+        line-height: 1.8;
+    }
+
+    .license-image {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 10px;
+        box-shadow: 0 15px 40px rgba(0,0,0,.05);
+    }
+
+    .license-image img {
+        border-radius: 12px;
+    }
+
+    /* =========================
+       SAVE
+    ========================= */
+
+    .save-image {
+        max-width: 850px;
+        width: fit-content;
+        margin: 0 auto;
+        background: var(--surface-soft);
+        border-radius: 22px;
+        padding: 12px;
+        border: 1px solid var(--border);
+    }
+
+    .save-image img {
+        border-radius: 13px;
+        box-shadow: 0 15px 35px rgba(0,0,0,.08);
+    }
+
+    .save-caption {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+    }
+
+    /* =========================
+       PRIVACY
+    ========================= */
+
+    .privacy-section {
+        background: white;
+    }
+
+    .privacy-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 50px;
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        gap: 28px;
+        align-items: start;
+        box-shadow: 0 12px 35px rgba(0,0,0,.025);
+    }
+
+    .privacy-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 18px;
+        background: var(--surface-soft);
+        display: grid;
+        place-items: center;
+        color: var(--text);
+    }
+
+    .privacy-card h2 {
+        font-size: 30px;
+        letter-spacing: -0.045em;
+        margin-bottom: 12px;
+    }
+
+    .privacy-card p {
+        color: var(--text-soft);
+        line-height: 1.8;
+    }
+
+    /* =========================
+       FAQ
+    ========================= */
+
+    .faq-list {
+        max-width: 800px;
+        display: grid;
+        gap: 10px;
+    }
+
+    .faq-item {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: white;
+        overflow: hidden;
+        transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .faq-item:hover {
+        border-color: #d4d4d8;
+    }
+
+    .faq-item[open] {
+        box-shadow: 0 8px 24px rgba(0,0,0,.035);
+    }
+
+    .faq-item summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 19px 21px;
+        font-weight: 700;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq-question {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+    }
+
+    .faq-question-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: var(--surface-soft);
+        display: grid;
+        place-items: center;
+        color: var(--text-soft);
+        flex: 0 0 auto;
+    }
+
+    .faq-chevron {
+        width: 17px;
+        height: 17px;
+        color: var(--muted);
+        transition: transform .2s ease;
+        flex: 0 0 auto;
+    }
+
+    .faq-item[open] .faq-chevron {
+        transform: rotate(180deg);
+    }
+
+    .faq-item p {
+        padding: 0 21px 20px 60px;
+        color: var(--text-soft);
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta-section {
+        background: var(--text);
+        color: white;
+        text-align: center;
+        padding: 115px 0;
+    }
+
+    .cta-section h2 {
+        max-width: 720px;
+        margin: 0 auto;
+        font-size: clamp(38px, 5vw, 58px);
+        line-height: 1.05;
+        letter-spacing: -0.06em;
+    }
+
+    .cta-section p {
+        max-width: 570px;
+        margin: 22px auto 0;
+        color: #a1a1aa;
+        line-height: 1.7;
+    }
+
+    .cta-section .button-primary {
+        margin-top: 32px;
+        background: white;
+        color: var(--text);
+        box-shadow: none;
+    }
+
+    .cta-section .button-primary:hover {
+        background: #f4f4f5;
+    }
+
+    .cta-small {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 17px;
+        color: #71717a;
+        font-size: 12px;
+    }
+
+    .cta-small span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        background: var(--text);
+        border-top: 1px solid #27272a;
+        color: #a1a1aa;
+        padding: 30px 0;
+    }
+
+    .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .footer-brand {
+        font-size: 14px;
+        font-weight: 700;
+        color: white;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 22px;
+        flex-wrap: wrap;
+        font-size: 12px;
+    }
+
+    .footer-links a {
+        transition: color .2s ease;
+    }
+
+    .footer-links a:hover {
+        color: white;
+    }
+
+    .disclaimer {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        gap: 7px;
+        font-size: 11px;
+        color: #71717a;
+        margin-top: 10px;
+        line-height: 1.6;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+        .nav-links {
+            display: none;
+        }
+
+        .hero {
+            padding: 75px 0 60px;
+        }
+
+        section {
+            padding: 75px 0;
+        }
+
+        .folder-grid,
+        .extension-box,
+        .license-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .step,
+        .step:nth-child(even) {
+            grid-template-columns: 1fr;
+            gap: 35px;
+        }
+
+        .step:nth-child(even) .step-copy {
+            order: initial;
+        }
+
+        .steps {
+            gap: 75px;
+        }
+
+        .independence-inner {
+            padding: 18px 0;
+        }
+
+        .privacy-card {
+            grid-template-columns: 1fr;
+            padding: 30px;
+        }
+
+        .preview-banner {
+            grid-template-columns: 1fr;
+        }
+
+        .preview-badge {
+            margin-bottom: 2px;
+        }
+
+        .footer-inner {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 500px) {
+
+        .container {
+            width: min(calc(100% - 28px), var(--max-width));
+        }
+
+        .hero h1 {
+            font-size: 42px;
+        }
+
+        .hero p {
+            font-size: 16px;
+        }
+
+        .hero-image {
+            margin-top: 45px;
+        }
+
+        .button {
+            width: 100%;
+        }
+
+        .hero-actions {
+            width: 100%;
+        }
+
+        .folder-visual {
+            padding: 15px;
+        }
+
+        .folder-visual-inner {
+            padding: 19px;
+        }
+
+        .privacy-card {
+            padding: 25px;
+        }
+
+        .privacy-card h2 {
+            font-size: 26px;
+        }
+
+        .faq-item p {
+            padding-left: 21px;
+        }
+
+        .faq-question-icon {
+            display: none;
+        }
+
+        .cta-small {
+            flex-direction: column;
+            gap: 8px;
+        }
+    }
+
+    /* =========================
+       SUBTLE REVEAL
+    ========================= */
+
+    @media (prefers-reduced-motion: no-preference) {
+        section,
+        .hero-image,
+        .independence {
+            animation: fadeUp .55s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+</style>
+
+
+</head>
+
+<body>
+
+<!-- SVG ICON DEFINITIONS -->
+
+<svg width="0" height="0" style="position:absolute">
+    <symbol id="icon-download" viewBox="0 0 24 24">
+        <path d="M12 3v11"/>
+        <path d="m7 10 5 5 5-5"/>
+        <path d="M5 20h14"/>
+    </symbol>
+
+
+<symbol id="icon-arrow-right" viewBox="0 0 24 24">
+    <path d="M5 12h14"/>
+    <path d="m13 6 6 6-6 6"/>
+</symbol>
+
+<symbol id="icon-arrow-down" viewBox="0 0 24 24">
+    <path d="M12 5v14"/>
+    <path d="m6 13 6 6 6-6"/>
+</symbol>
+
+<symbol id="icon-eye" viewBox="0 0 24 24">
+    <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/>
+    <circle cx="12" cy="12" r="2.5"/>
+</symbol>
+
+<symbol id="icon-warning" viewBox="0 0 24 24">
+    <path d="M10.3 4.2 2.2 18.3a2 2 0 0 0 1.7 3h16.2a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0Z"/>
+    <path d="M12 9v4"/>
+    <path d="M12 17h.01"/>
+</symbol>
+
+<symbol id="icon-folder" viewBox="0 0 24 24">
+    <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10l2 2h6.5A2.5 2.5 0 0 1 21 9.5v7A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5v-9Z"/>
+</symbol>
+
+<symbol id="icon-file" viewBox="0 0 24 24">
+    <path d="M7 3h7l4 4v14H7z"/>
+    <path d="M14 3v5h5"/>
+    <path d="M10 13h5"/>
+    <path d="M10 17h5"/>
+</symbol>
+
+<symbol id="icon-archive" viewBox="0 0 24 24">
+    <path d="M4 7h16v13H4z"/>
+    <path d="M3 4h18v3H3z"/>
+    <path d="M10 11h4"/>
+    <path d="M10 14h4"/>
+</symbol>
+
+<symbol id="icon-check" viewBox="0 0 24 24">
+    <path d="m5 12 4 4L19 6"/>
+</symbol>
+
+<symbol id="icon-shield" viewBox="0 0 24 24">
+    <path d="M12 3 20 6v6c0 5-3.3 8-8 9-4.7-1-8-4-8-9V6z"/>
+    <path d="m8.5 12 2.2 2.2 4.8-5"/>
+</symbol>
+
+<symbol id="icon-chevron-down" viewBox="0 0 24 24">
+    <path d="m6 9 6 6 6-6"/>
+</symbol>
+
+<symbol id="icon-lock" viewBox="0 0 24 24">
+    <rect x="5" y="10" width="14" height="11" rx="2"/>
+    <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+</symbol>
+
+
+</svg>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="container nav-inner">
+
+
+    <a href="#" class="brand">
+
+         <div class="brand-mark">
+            <img src="assets\Quick Retrieval Logo.jpeg" alt="SNote">
+         </div>
+         
+        <!-- SNote Retrieval -->
+    </a>
+
+    <div class="nav-links">
+        <a href="#how-it-works">How it works</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#faq">FAQ</a>
+
+        <a href="#" class="nav-cta">
+            <svg class="icon icon-sm">
+                <use href="#icon-download"></use>
+            </svg>
+            Download
+        </a>
+    </div>
+
+</div>
+
+
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+
+<div class="container">
+
+    <div class="eyebrow">
+        <span class="eyebrow-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 640 640"><path d="M.2 298.669L0 90.615l256.007-34.76v242.814H.201zM298.658 49.654L639.905-.012v298.681H298.657V49.654zM640 341.331l-.071 298.681L298.669 592V341.332h341.33zM255.983 586.543L.189 551.463v-210.18h255.794v245.26z"/></svg>
+        </span>
+
+        Free preview · Windows
+    </div>
+
+    <h1>
+        Export your Samsung Notes.
+        <span>Keep your folders.</span>
+    </h1>
+
+    <p>
+        SNote Retrieval turns your Samsung Notes into an organized ZIP file
+        while preserving the folders and nested folders you created over time.
+    </p>
+
+    <div class="hero-actions">
+
+        <a href="#" class="button button-primary">
+            <svg class="icon">
+                <use href="#icon-download"></use>
+            </svg>
+            Download for Windows
+        </a>
+
+        <a href="#how-it-works" class="button button-secondary">
+            See how it works
+            <svg class="icon icon-sm">
+                <use href="#icon-arrow-right"></use>
+            </svg>
+        </a>
+
+    </div>
+
+    <div class="hero-note">
+        <svg class="icon icon-sm">
+            <use href="#icon-eye"></use>
+        </svg>
+        Preview your actual notes and folders for free before purchasing.
+    </div>
+
+    <!-- <div class="hero-image">
+        <img src="assets/1 home page.jpg"
+             alt="SNote Retrieval application home page">
+    </div> -->
+
+</div>
+
+
+</header>
+
+<!-- INDEPENDENCE NOTICE -->
+
+<div class="independence">
+    <div class="container independence-inner">
+
+
+    <svg class="icon notice-icon">
+        <use href="#icon-warning"></use>
+    </svg>
+
+    <span>
+        <strong>Independent application.</strong>
+        SNote Retrieval is not affiliated with, endorsed by, or sponsored by Samsung.
+    </span>
+
+</div>
+
+
+</div>
+
+<!-- FOLDER VALUE -->
+
+<section class="folder-section">
+
+
+<div class="container">
+
+    <div class="folder-grid">
+
+        <div class="folder-content">
+
+            <div class="section-label">
+                Your organization matters
+            </div>
+
+            <h2>
+                The folders you created come with you.
+            </h2>
+
+            <p>
+                Over time, you organized your Samsung Notes into folders and
+                nested folders. SNote Retrieval preserves that organization
+                when exporting your notes.
+            </p>
+
+            <p>
+                It isn't a note manager. It simply helps you take the notes
+                and folder structure you already have and export them into
+                files you can manage yourself.
+            </p>
+
+            <div class="folder-points">
+
+                <div class="folder-point">
+                    <span class="check">
+                        <svg class="icon">
+                            <use href="#icon-check"></use>
+                        </svg>
+                    </span>
+                    Existing folders are preserved
+                </div>
+
+                <div class="folder-point">
+                    <span class="check">
+                        <svg class="icon">
+                            <use href="#icon-check"></use>
+                        </svg>
+                    </span>
+                    Nested folders are preserved
+                </div>
+
+                <div class="folder-point">
+                    <span class="check">
+                        <svg class="icon">
+                            <use href="#icon-check"></use>
+                        </svg>
+                    </span>
+                    Notes shown in the preview are included
+                </div>
+
+                <div class="folder-point">
+                    <span class="check">
+                        <svg class="icon">
+                            <use href="#icon-check"></use>
+                        </svg>
+                    </span>
+                    Everything is packaged into a ZIP
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="folder-visual">
+
+            <div class="folder-visual-inner">
+
+                <div class="tree-title">
+                    Example of your exported structure
+                </div>
+
+                <div class="tree">
+
+                    <div class="tree-row folder">
+                        <svg class="icon">
+                            <use href="#icon-folder"></use>
+                        </svg>
+                        Work
+                    </div>
+
+                    <div class="tree-row nested">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-folder"></use>
+                        </svg>
+                        Meetings
+                    </div>
+
+                    <div class="tree-row note">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-file"></use>
+                        </svg>
+                        Monday.md
+                    </div>
+
+                    <div class="tree-row note">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-file"></use>
+                        </svg>
+                        Planning.md
+                    </div>
+
+                    <div class="tree-row nested">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-folder"></use>
+                        </svg>
+                        Projects
+                    </div>
+
+                    <div class="tree-row note">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-file"></use>
+                        </svg>
+                        Project A.md
+                    </div>
+
+                    <div class="tree-row folder">
+                        <svg class="icon">
+                            <use href="#icon-folder"></use>
+                        </svg>
+                        Personal
+                    </div>
+
+                    <div class="tree-row nested">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-folder"></use>
+                        </svg>
+                        Travel
+                    </div>
+
+                    <div class="tree-row note">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-file"></use>
+                        </svg>
+                        Japan.md
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section id="how-it-works">
+
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            How it works
+        </div>
+
+        <h2>
+            From Samsung Notes to your ZIP.
+        </h2>
+
+        <p>
+            SNote Retrieval keeps the process simple. The application
+            automatically looks for the required Samsung Notes data and
+            guides you if your notes need to be synced first.
+        </p>
+
+    </div>
+
+    <div class="steps">
+
+        <!-- STEP 1 -->
+
+        <div class="step">
+
+            <div class="step-copy">
+
+                <div class="step-number">01</div>
+
+                <h3>Download SNote Retrieval</h3>
+
+                <p>
+                    Download the Windows application and open it.
+                    SNote Retrieval automatically looks for the files
+                    required to read your Samsung Notes.
+                </p>
+
+                <p style="margin-top:15px;">
+                    If Samsung Notes isn't ready, the application guides
+                    you through installing or opening Samsung Notes and
+                    syncing your notes.
+                </p>
+
+            </div>
+
+            <div class="step-image">
+
+                <img src="assets/1 home page.jpg"
+                     alt="SNote Retrieval home page">
+
+            </div>
+
+        </div>
+
+        <!-- STEP 2 -->
+
+        <div class="step">
+
+            <div class="step-copy">
+
+                <div class="step-number">02</div>
+
+                <h3>Press “Extract Now”</h3>
+
+                <p>
+                    Once your Samsung Notes data is ready, press
+                    <strong>Extract Now</strong>.
+                </p>
+
+                <p style="margin-top:15px;">
+                    The extraction happens locally on your computer.
+                    You don't need an internet connection to extract
+                    your notes.
+                </p>
+
+            </div>
+
+            <div class="step-image">
+
+                <img src="assets/2 extract page click on note to see content.jpg"
+                     alt="SNote Retrieval preview showing notes and note content">
+
+            </div>
+
+        </div>
+
+        <!-- STEP 3 -->
+
+        <div class="step">
+
+            <div class="step-copy">
+
+                <div class="step-number">03</div>
+
+                <h3>Browse your folders and notes</h3>
+
+                <p>
+                    SNote Retrieval shows you a preview of your extracted
+                    data before you purchase a license.
+                </p>
+
+                <p style="margin-top:15px;">
+                    Browse your existing folders and nested folders in the
+                    <strong>Folders</strong> tab, or browse all notes in
+                    the <strong>Notes</strong> tab.
+                </p>
+
+                <p style="margin-top:15px;">
+                    Click any note to see its file name and content.
+                </p>
+
+            </div>
+
+            <div class="step-image">
+
+                <img src="assets/2 extract page click on note to see content.jpg"
+                     alt="Previewing note content in SNote Retrieval">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- FREE PREVIEW -->
+
+<section class="preview-section">
+
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            Preview first
+        </div>
+
+        <h2>
+            Check your actual export. It's free.
+        </h2>
+
+        <p>
+            You don't have to purchase a license just to find out what
+            SNote Retrieval can extract. Download the application,
+            extract your notes, and browse the preview first.
+        </p>
+
+    </div>
+
+    <div class="preview-banner">
+
+        <div class="preview-badge">
+            <svg class="icon icon-lg">
+                <use href="#icon-eye"></use>
+            </svg>
+        </div>
+
+        <div>
+            <strong>No payment required to check your preview.</strong>
+
+            <span>
+                See your folders, notes, file names and note contents
+                before deciding whether to purchase.
+            </span>
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- EXTENSIONS -->
+
+<section class="extension-section">
+
+
+<div class="container">
+
+    <div class="extension-box">
+
+        <div class="extension-copy">
+
+            <div class="section-label">
+                File extensions
+            </div>
+
+            <h2>
+                Choose the extension you want.
+            </h2>
+
+            <p>
+                Notes are exported as <strong>.md</strong> files by default.
+                If you want another extension, change the extension on a
+                note in the preview.
+            </p>
+
+            <p>
+                The extension you choose is automatically applied to
+                <strong>all exported notes</strong>.
+            </p>
+
+            <p>
+                Changing the extension does not change the contents of
+                your notes. It only changes the file name and extension.
+            </p>
+
+        </div>
+
+        <div class="extension-example">
+
+            <div class="file-card">
+                <svg class="icon">
+                    <use href="#icon-file"></use>
+                </svg>
+                <p>Meeting Notes<b>.md</b></p>
+            </div>
+
+            <div class="arrow">
+                <svg class="icon">
+                    <use href="#icon-arrow-down"></use>
+                </svg>
+            </div>
+
+            <div class="file-card">
+                <svg class="icon">
+                    <use href="#icon-file"></use>
+                </svg>
+                <p>Meeting Notes<b>.txt</b></p>
+            </div>
+
+            <div class="extension-note">
+                Same note content. Different file extension.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- RENAME SCREENSHOT -->
+
+<section>
+
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            Make your choice in preview
+        </div>
+
+        <h2>
+            Rename the extension before you save.
+        </h2>
+
+        <p>
+            Select a note in the preview and change its file extension.
+            The chosen extension will be used for all exported notes.
+        </p>
+
+    </div>
+
+    <div class="save-image">
+
+        <img src="assets/3 rename ext.jpg"
+             alt="Changing the note file extension in SNote Retrieval">
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- LICENSE -->
+
+<section class="license-section">
+
+
+<div class="container">
+
+    <div class="license-grid">
+
+        <div class="license-copy">
+
+            <div class="section-label">
+                When you're ready
+            </div>
+
+            <h2>
+                Purchase only after you've checked your preview.
+            </h2>
+
+            <p>
+                When you click Save for the first time, SNote Retrieval
+                takes you to the license page.
+            </p>
+
+            <p style="margin-top:15px;">
+                Click <strong>Get A License</strong> to open the payment
+                website in your default browser. After your one-time
+                purchase, you'll receive your license key on the purchase
+                page and by email.
+            </p>
+
+            <p style="margin-top:15px;">
+                Copy the key, paste it into SNote Retrieval, and activate
+                your license.
+            </p>
+
+        </div>
+
+        <div class="license-image">
+
+            <img src="assets/4 license page.jpg"
+                 alt="SNote Retrieval license activation page">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- SAVE -->
+
+<section>
+
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            Export
+        </div>
+
+        <h2>
+            Choose where your ZIP belongs.
+        </h2>
+
+        <p>
+            Once your license is activated, return to the preview and
+            click Save. Choose the destination folder and SNote Retrieval
+            creates your ZIP file there.
+        </p>
+
+    </div>
+
+    <div class="save-image">
+
+        <img src="assets/5 save page.jpg"
+             alt="SNote Retrieval save destination page">
+
+    </div>
+
+    <div class="save-caption">
+        <svg class="icon icon-sm">
+            <use href="#icon-folder"></use>
+        </svg>
+        After saving, SNote Retrieval automatically opens the folder
+        containing your exported ZIP.
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- WHAT YOU GET -->
+
+<section class="folder-section">
+
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            The result
+        </div>
+
+        <h2>
+            An organized ZIP you can manage yourself.
+        </h2>
+
+        <p>
+            SNote Retrieval doesn't try to become your new notes application.
+            It exports your notes and their existing organization so you
+            can take the resulting files wherever you need them.
+        </p>
+
+    </div>
+
+    <div class="folder-grid">
+
+        <div class="folder-visual">
+
+            <div class="folder-visual-inner">
+
+                <div class="tree-title">
+                    Inside your ZIP
+                </div>
+
+                <div class="tree">
+
+                    <div class="tree-row folder">
+                        <svg class="icon">
+                            <use href="#icon-archive"></use>
+                        </svg>
+                        Samsung Notes.zip
+                    </div>
+
+                    <div class="tree-row nested">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-folder"></use>
+                        </svg>
+                        Work
+                    </div>
+
+                    <div class="tree-row note">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-file"></use>
+                        </svg>
+                        Meeting.md
+                    </div>
+
+                    <div class="tree-row note">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-file"></use>
+                        </svg>
+                        Ideas.md
+                    </div>
+
+                    <div class="tree-row nested">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-folder"></use>
+                        </svg>
+                        Projects
+                    </div>
+
+                    <div class="tree-row nested">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-folder"></use>
+                        </svg>
+                        Project Alpha
+                    </div>
+
+                    <div class="tree-row note">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-file"></use>
+                        </svg>
+                        Notes.md
+                    </div>
+
+                    <div class="tree-row nested">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-folder"></use>
+                        </svg>
+                        Personal
+                    </div>
+
+                    <div class="tree-row note">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-file"></use>
+                        </svg>
+                        Travel.md
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="folder-content">
+
+            <h2>
+                Your folders. Your notes. Your files.
+            </h2>
+
+            <p>
+                The folders in the exported ZIP represent the folders you
+                created and organized in Samsung Notes.
+            </p>
+
+            <p>
+                SNote Retrieval exports the notes shown in the preview
+                while keeping that structure intact, including nested folders.
+            </p>
+
+            <a href="#" class="button button-primary">
+                <svg class="icon">
+                    <use href="#icon-download"></use>
+                </svg>
+                Download SNote Retrieval
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- PRIVACY -->
+
+<section id="privacy" class="privacy-section">
+
+
+<div class="container">
+
+    <div class="privacy-card">
+
+        <div class="privacy-icon">
+            <svg class="icon icon-xl">
+                <use href="#icon-shield"></use>
+            </svg>
+        </div>
+
+        <div>
+
+            <h2>Your notes stay on your computer.</h2>
+
+            <p>
+                SNote Retrieval performs the extraction locally on your
+                Windows computer. Your note content does not need to be
+                uploaded to a server for the extraction process.
+            </p>
+
+            <p style="margin-top:13px;">
+                An internet connection is required when SNote Retrieval
+                needs to verify your license. The extraction itself works
+                offline.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- SIMPLE PRODUCT STATEMENT -->
+
+<section>
+
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            Simple by design
+        </div>
+
+        <h2>
+            Nothing to reorganize. Nothing to learn.
+        </h2>
+
+        <p>
+            Your organization already exists in Samsung Notes.
+            SNote Retrieval is simply an export tool that helps you
+            preserve it in a portable ZIP file.
+        </p>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- FAQ -->
+
+<section id="faq" class="folder-section">
+
+
+<div class="container">
+
+    <div class="section-header">
+
+        <div class="section-label">
+            FAQ
+        </div>
+
+        <h2>
+            Questions, answered.
+        </h2>
+
+    </div>
+
+    <div class="faq-list">
+
+        <details class="faq-item">
+            <summary>
+                <span class="faq-question">
+                    <span class="faq-question-icon">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-eye"></use>
+                        </svg>
+                    </span>
+                    Is the preview free?
+                </span>
+
+                <svg class="faq-chevron">
+                    <use href="#icon-chevron-down"></use>
+                </svg>
+            </summary>
+
+            <p>
+                Yes. You can download SNote Retrieval and check your
+                folders and notes in the preview before purchasing a license.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <span class="faq-question">
+                    <span class="faq-question-icon">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-folder"></use>
+                        </svg>
+                    </span>
+                    Does SNote Retrieval preserve my folders?
+                </span>
+
+                <svg class="faq-chevron">
+                    <use href="#icon-chevron-down"></use>
+                </svg>
+            </summary>
+
+            <p>
+                Yes. The folders and nested folders you created in
+                Samsung Notes are preserved in the exported ZIP.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <span class="faq-question">
+                    <span class="faq-question-icon">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-file"></use>
+                        </svg>
+                    </span>
+                    Can I select which notes to export?
+                </span>
+
+                <svg class="faq-chevron">
+                    <use href="#icon-chevron-down"></use>
+                </svg>
+            </summary>
+
+            <p>
+                No. SNote Retrieval exports the notes shown in the preview.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <span class="faq-question">
+                    <span class="faq-question-icon">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-eye"></use>
+                        </svg>
+                    </span>
+                    Can I see my note contents before purchasing?
+                </span>
+
+                <svg class="faq-chevron">
+                    <use href="#icon-chevron-down"></use>
+                </svg>
+            </summary>
+
+            <p>
+                Yes. Click any note in the Folders or Notes tab to see
+                its file name and content.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <span class="faq-question">
+                    <span class="faq-question-icon">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-file"></use>
+                        </svg>
+                    </span>
+                    What is the default file format?
+                </span>
+
+                <svg class="faq-chevron">
+                    <use href="#icon-chevron-down"></use>
+                </svg>
+            </summary>
+
+            <p>
+                Notes are exported as <strong>.md</strong> files by default.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <span class="faq-question">
+                    <span class="faq-question-icon">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-file"></use>
+                        </svg>
+                    </span>
+                    Can I change .md to .txt?
+                </span>
+
+                <svg class="faq-chevron">
+                    <use href="#icon-chevron-down"></use>
+                </svg>
+            </summary>
+
+            <p>
+                Yes. You can change the extension in the preview.
+                The chosen extension is applied automatically to all
+                exported notes. Changing the extension does not change
+                the note content.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <span class="faq-question">
+                    <span class="faq-question-icon">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-lock"></use>
+                        </svg>
+                    </span>
+                    Does extraction require internet?
+                </span>
+
+                <svg class="faq-chevron">
+                    <use href="#icon-chevron-down"></use>
+                </svg>
+            </summary>
+
+            <p>
+                No. The extraction process works offline. Internet access
+                is required for license verification.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <span class="faq-question">
+                    <span class="faq-question-icon">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-warning"></use>
+                        </svg>
+                    </span>
+                    Is SNote Retrieval affiliated with Samsung?
+                </span>
+
+                <svg class="faq-chevron">
+                    <use href="#icon-chevron-down"></use>
+                </svg>
+            </summary>
+
+            <p>
+                No. SNote Retrieval is an independent application and is
+                not affiliated with, endorsed by, or sponsored by Samsung
+                Electronics or Samsung Notes.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <span class="faq-question">
+                    <span class="faq-question-icon">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-check"></use>
+                        </svg>
+                    </span>
+                    Is the license a subscription?
+                </span>
+
+                <svg class="faq-chevron">
+                    <use href="#icon-chevron-down"></use>
+                </svg>
+            </summary>
+
+            <p>
+                No. SNote Retrieval uses a one-time purchase.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>
+                <span class="faq-question">
+                    <span class="faq-question-icon">
+                        <svg class="icon icon-sm">
+                            <use href="#icon-lock"></use>
+                        </svg>
+                    </span>
+                    How do I receive my license key?
+                </span>
+
+                <svg class="faq-chevron">
+                    <use href="#icon-chevron-down"></use>
+                </svg>
+            </summary>
+
+            <p>
+                After purchasing, your license key is provided to you and
+                is also sent to your email address.
+            </p>
+        </details>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- FINAL CTA -->
+
+<section class="cta-section">
+
+
+<div class="container">
+
+    <h2>
+        Preserve your Samsung Notes organization.
+    </h2>
+
+    <p>
+        Download SNote Retrieval, check your actual preview for free,
+        and decide for yourself before purchasing.
+    </p>
+
+    <a href="#" class="button button-primary">
+
+        <svg class="icon">
+            <use href="#icon-download"></use>
+        </svg>
+
+        Download SNote Retrieval
+
+    </a>
+
+    <div class="cta-small">
+
+        <span>
+            <span class="windows-mark" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+            Windows only
+        </span>
+
+        <span>
+            <svg class="icon icon-sm">
+                <use href="#icon-eye"></use>
+            </svg>
+            Free preview
+        </span>
+
+        <span>
+            <svg class="icon icon-sm">
+                <use href="#icon-check"></use>
+            </svg>
+            One-time purchase
+        </span>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+
+<div class="container footer-inner">
+
+    <div class="footer-brand">
+        SNote Retrieval
+    </div>
+
+    <div class="footer-links">
+
+        <a href="/legal/privacy">Privacy</a>
+        <a href="/legal/refund">Refund Policy</a>
+        <a href="/legal/data-extraction-disclaimer">
+            Data Extraction Disclaimer
+        </a>
+        <a href="/legal/third-party-disclaimer">
+            Third-Party Disclaimer
+        </a>
+
+    </div>
+
+    <div class="disclaimer">
+
+        <svg class="icon icon-sm">
+            <use href="#icon-warning"></use>
+        </svg>
+
+        <span>
+            SNote Retrieval is an independent application and is not affiliated
+            with, endorsed by, or sponsored by Samsung Electronics or Samsung Notes.
+        </span>
+
+    </div>
+
+</div>
+
+
+</footer>
+
+</body>
+</html>
