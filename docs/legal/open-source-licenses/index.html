@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Open Source Licenses — SNote Retrieval</title>
+
+<meta name="description"
+    content="Open Source Licenses for SNote Retrieval by Quick Retrieval. Information about third-party open-source software used by SNote Retrieval.">
+
+<style>
+    :root {
+        --bg: #f7f8fa;
+        --surface: #ffffff;
+        --text: #17181a;
+        --muted: #666b73;
+        --border: #e7e8eb;
+        --accent: #111827;
+        --link: #2563eb;
+        --max-width: 860px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
+        font-size: 16px;
+        line-height: 1.75;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
+
+    main {
+        width: min(calc(100% - 40px), var(--max-width));
+        margin: 0 auto;
+        padding: 64px 0 90px;
+    }
+
+    .header {
+        margin-bottom: 38px;
+    }
+
+    .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 28px;
+        color: var(--text);
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+    }
+
+    .brand:hover {
+        text-decoration: none;
+    }
+
+    .brand-logo {
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        overflow: hidden;
+        object-fit: contain;
+        display: block;
+    }
+
+    .brand-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+        transform: scale(1.3);
+        filter: grayscale(100%);
+    }
+
+    h1 {
+        margin: 0 0 10px;
+        font-size: clamp(34px, 5vw, 48px);
+        line-height: 1.1;
+        letter-spacing: -0.045em;
+        font-weight: 750;
+    }
+
+    .updated {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+    .legal-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 40px;
+        padding: 6px;
+        background: #eef0f2;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+    }
+
+    .legal-nav a {
+        padding: 7px 11px;
+        border-radius: 8px;
+        color: #5f646c;
+        text-decoration: none;
+        font-size: 13px;
+        line-height: 1.3;
+        font-weight: 550;
+        transition:
+            background 0.15s ease,
+            color 0.15s ease;
+    }
+
+    .legal-nav a:hover {
+        background: #ffffff;
+        color: var(--text);
+        text-decoration: none;
+    }
+
+    .legal-nav a.active {
+        background: #ffffff;
+        color: var(--text);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .intro {
+        margin-bottom: 42px;
+        padding: 28px 30px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+    }
+
+    .intro p:last-child {
+        margin-bottom: 0;
+    }
+
+    section {
+        margin-bottom: 46px;
+    }
+
+    h2 {
+        margin: 0 0 18px;
+        font-size: 23px;
+        line-height: 1.3;
+        letter-spacing: -0.025em;
+        font-weight: 700;
+    }
+
+    h3 {
+        margin: 30px 0 10px;
+        font-size: 17px;
+        line-height: 1.4;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+    }
+
+    p {
+        margin: 0 0 17px;
+    }
+
+    ul {
+        margin: 12px 0 20px;
+        padding-left: 25px;
+    }
+
+    li {
+        margin: 6px 0;
+        padding-left: 4px;
+    }
+
+    a {
+        color: var(--link);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    strong {
+        font-weight: 650;
+    }
+
+    .highlight {
+        margin: 22px 0;
+        padding: 20px 22px;
+        background: #f1f3f5;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+    }
+
+    .highlight strong {
+        display: block;
+    }
+
+    .component {
+        margin: 22px 0;
+        padding: 20px 22px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+    }
+
+    .component h3 {
+        margin: 0 0 8px;
+    }
+
+    .component p {
+        margin-bottom: 8px;
+    }
+
+    .component p:last-child {
+        margin-bottom: 0;
+    }
+
+    .license {
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+    .license-url {
+        font-size: 14px;
+    }
+
+    .contact {
+        padding: 26px 28px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+    }
+
+    .license-note {
+        margin-top: 50px;
+        padding: 28px 30px;
+        background: #111827;
+        color: #ffffff;
+        border-radius: 16px;
+    }
+
+    .license-note h2 {
+        margin-bottom: 12px;
+        color: #ffffff;
+    }
+
+    .license-note p {
+        margin-bottom: 0;
+        color: #d9dce1;
+    }
+
+    .license-note strong {
+        color: #ffffff;
+    }
+
+    footer {
+        margin-top: 60px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+        main {
+            width: min(calc(100% - 28px), var(--max-width));
+            padding: 42px 0 70px;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .legal-nav {
+            gap: 4px;
+            padding: 5px;
+        }
+
+        .legal-nav a {
+            font-size: 12px;
+            padding: 7px 9px;
+        }
+
+        .intro,
+        .contact,
+        .license-note,
+        .component {
+            padding: 22px;
+            border-radius: 14px;
+        }
+
+        section {
+            margin-bottom: 38px;
+        }
+
+        h2 {
+            font-size: 21px;
+        }
+
+        body {
+            font-size: 15.5px;
+            line-height: 1.7;
+        }
+    }
+</style>
+
+
+</head>
+
+<body>
+
+<main>
+
+
+<header class="header">
+
+    <a class="brand" href="../../index.html">
+        <div class="brand-logo"><img src="../../assets/Quick Retrieval Logo.jpeg" alt="SNote Retrieval"></div>
+        <span>SNote Retrieval</span>
+    </a>
+
+    <h1>Open Source Licenses</h1>
+
+    <p class="updated">
+        Last updated: September 5, 2026
+    </p>
+
+</header>
+
+
+<nav class="legal-nav" aria-label="Legal pages">
+
+    <a href="../../legal/privacy/index.html">
+        Privacy
+    </a>
+
+    <a href="../../legal/refund/index.html">
+        Refund
+    </a>
+
+    <a href="../../legal/data-extraction-disclaimer/index.html">
+        Data Extraction
+    </a>
+
+    <a href="../../legal/third-party-disclaimer/index.html">
+        Third-Party &amp; Trademark
+    </a>
+
+    <a href="../../legal/open-source-licenses/index.html" class="active">
+        Open Source
+    </a>
+
+</nav>
+
+
+<div class="intro">
+
+    <p>
+        SNote Retrieval by <strong>Quick Retrieval</strong> uses third-party
+        open-source software components. These components are provided under
+        their respective open-source licenses.
+    </p>
+
+    <p>
+        This page identifies the open-source software packages used by the
+        application and provides their associated license information,
+        authors, and project pages where available.
+    </p>
+
+    <p>
+        SNote Retrieval is distributed as a Windows application and is
+        packaged using PyInstaller. The software components listed below
+        correspond to the application environment used to prepare the
+        applicable release.
+    </p>
+
+</div>
+
+
+<section>
+
+    <h2>1. Open-Source Components</h2>
+
+    <p>
+        The following third-party components are used by, or may be included
+        with, SNote Retrieval. Component versions may change in future
+        releases.
+    </p>
+
+
+    <div class="component">
+
+        <h3>PySide6 — 6.11.2</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+        </p>
+
+        <p>
+            PySide6 provides Python bindings for the Qt application framework
+            and is used to provide the graphical user interface of
+            SNote Retrieval.
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Qt for Python Team
+            &lt;pyside@qt-project.org&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://pyside.org" target="_blank" rel="noopener noreferrer">
+                pyside.org
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>PySide6_Addons — 6.11.2</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+        </p>
+
+        <p>
+            Additional Qt modules provided as part of the PySide6
+            distribution.
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Qt for Python Team
+            &lt;pyside@qt-project.org&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://pyside.org" target="_blank" rel="noopener noreferrer">
+                pyside.org
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>PySide6_Essentials — 6.11.2</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+        </p>
+
+        <p>
+            Essential Qt modules used by the PySide6 framework.
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Qt for Python Team
+            &lt;pyside@qt-project.org&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://pyside.org" target="_blank" rel="noopener noreferrer">
+                pyside.org
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>shiboken6 — 6.11.2</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
+        </p>
+
+        <p>
+            Supporting technology used by PySide6 for generating and
+            providing Python bindings for Qt libraries.
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Qt for Python Team
+            &lt;pyside@qt-project.org&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://pyside.org" target="_blank" rel="noopener noreferrer">
+                pyside.org
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>requests — 2.34.2</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            Apache License 2.0
+        </p>
+
+        <p>
+            Requests is used for HTTP communication required by certain
+            SNote Retrieval services.
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Kenneth Reitz
+            &lt;me@kennethreitz.org&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/psf/requests" target="_blank" rel="noopener noreferrer">
+                github.com/psf/requests
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>keyring — 25.7.0</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            MIT License
+        </p>
+
+        <p>
+            Keyring is used to interact with supported operating-system
+            credential storage facilities.
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Kang Zhang
+            &lt;jobo.zh@gmail.com&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/jaraco/keyring" target="_blank" rel="noopener noreferrer">
+                github.com/jaraco/keyring
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>pathvalidate — 3.3.1</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            MIT License
+        </p>
+
+        <p>
+            Pathvalidate is used for validating and sanitizing file and
+            path names.
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Tsuyoshi Hombashi
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/thombashi/pathvalidate" target="_blank" rel="noopener noreferrer">
+                github.com/thombashi/pathvalidate
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>certifi — 2026.7.22</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            Mozilla Public License 2.0 (MPL-2.0)
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Kenneth Reitz
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/certifi/python-certifi" target="_blank" rel="noopener noreferrer">
+                github.com/certifi/python-certifi
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>charset-normalizer — 3.5.1</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            MIT License
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Ahmed R. TAHRI
+            &lt;tahri.ahmed@proton.me&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/jawah/charset_normalizer" target="_blank" rel="noopener noreferrer">
+                github.com/jawah/charset_normalizer
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>idna — 3.19</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            BSD 3-Clause License
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Kim Davies
+            &lt;kim+pypi@gumleaf.org&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/kjd/idna" target="_blank" rel="noopener noreferrer">
+                github.com/kjd/idna
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>jaraco.classes — 3.4.0</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            MIT License
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Jason R. Coombs
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/jaraco/jaraco.classes" target="_blank" rel="noopener noreferrer">
+                github.com/jaraco/jaraco.classes
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>jaraco.context — 6.1.2</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            MIT License
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Jason R. Coombs
+            &lt;jaraco@jaraco.com&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/jaraco/jaraco.context" target="_blank" rel="noopener noreferrer">
+                github.com/jaraco/jaraco.context
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>jaraco.functools — 4.6.0</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            MIT License
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Jason R. Coombs
+            &lt;jaraco@jaraco.com&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/jaraco/jaraco.functools" target="_blank" rel="noopener noreferrer">
+                github.com/jaraco/jaraco.functools
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>more-itertools — 11.1.0</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            MIT License
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Erik Rose
+            &lt;erikrose@grinchcentral.com&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/more-itertools/more-itertools" target="_blank" rel="noopener noreferrer">
+                github.com/more-itertools/more-itertools
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>pywin32-ctypes — 0.2.3</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            BSD 3-Clause License
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Enthought Inc.
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/enthought/pywin32-ctypes" target="_blank" rel="noopener noreferrer">
+                github.com/enthought/pywin32-ctypes
+            </a>
+        </p>
+
+    </div>
+
+
+    <div class="component">
+
+        <h3>urllib3 — 2.7.0</h3>
+
+        <p class="license">
+            <strong>License:</strong>
+            MIT License
+        </p>
+
+        <p class="license-url">
+            <strong>Author:</strong>
+            Andrey Petrov
+            &lt;andrey.petrov@shazow.net&gt;
+        </p>
+
+        <p class="license-url">
+            <strong>Project:</strong>
+            <a href="https://github.com/urllib3/urllib3" target="_blank" rel="noopener noreferrer">
+                github.com/urllib3/urllib3
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <h2>2. License Notices</h2>
+
+    <p>
+        The third-party software identified above is licensed by its
+        respective authors or copyright holders. SNote Retrieval does not
+        claim ownership of these third-party components.
+    </p>
+
+    <p>
+        Each component remains subject to the terms and conditions of its
+        applicable open-source license. Those licenses may grant rights
+        separate from and in addition to the rights granted under the
+        SNote Retrieval license agreement.
+    </p>
+
+    <div class="highlight">
+
+        <strong>Open-source software is provided under its respective license.</strong>
+
+        <p>
+            Nothing in this page is intended to modify, limit, or replace
+            the rights granted to you under an applicable open-source
+            license.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <h2>3. PySide6 and Qt Licensing</h2>
+
+    <p>
+        SNote Retrieval uses PySide6 and related components from the Qt for
+        Python project. The package metadata identifies these components as
+        being available under:
+        <strong>LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only</strong>.
+    </p>
+
+    <p>
+        The applicable license terms govern the use and distribution of
+        these components. Users and distributors should refer to the
+        applicable PySide6 and Qt license materials for the complete
+        licensing terms and conditions.
+    </p>
+
+    <p>
+        SNote Retrieval and Quick Retrieval are independent from the Qt for
+        Python project and its contributors.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>4. Third-Party Software and Trademarks</h2>
+
+    <p>
+        The names of third-party projects, packages, organizations, and
+        trademarks appearing on this page belong to their respective
+        owners.
+    </p>
+
+    <p>
+        The inclusion of a third-party software component in SNote Retrieval
+        does not imply endorsement, sponsorship, authorization, or
+        affiliation with Quick Retrieval or SNote Retrieval.
+    </p>
+
+    <p>
+        For information regarding Samsung and Samsung Notes trademarks,
+        please see our
+        <a href="../../legal/third-party-disclaimer/index.html">
+            Third-Party &amp; Trademark Disclaimer
+        </a>.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>5. Changes to Open-Source Components</h2>
+
+    <p>
+        SNote Retrieval may be updated over time. As a result, third-party
+        software components, versions, licenses, or applicable notices may
+        change between releases.
+    </p>
+
+    <p>
+        This page may be updated to reflect the open-source components
+        distributed with a particular version of SNote Retrieval.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>6. Contact Us</h2>
+
+    <div class="contact">
+
+        <p>
+            If you have questions about the open-source components or
+            licensing information associated with SNote Retrieval, you can
+            contact us at:
+        </p>
+
+        <p>
+            <strong>Quick Retrieval</strong><br>
+            Mumbai, Maharashtra, India
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            <a href="mailto:SNote.Retrieval@proton.me">
+                SNote.Retrieval@proton.me
+            </a>
+        </p>
+
+    </div>
+
+</section>
+
+
+<div class="license-note">
+
+    <h2>About These Licenses</h2>
+
+    <p>
+        SNote Retrieval is proprietary software developed by Quick Retrieval.
+        The open-source components listed on this page are separate
+        third-party software and remain licensed under their respective
+        open-source license terms. <strong>Their inclusion does not make
+        SNote Retrieval itself open-source software.</strong>
+    </p>
+
+</div>
+
+
+<footer>
+
+    © 2026 Quick Retrieval. All rights reserved.
+
+</footer>
+
+
+</main>
+
+</body>
+</html>
