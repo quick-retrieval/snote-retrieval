@@ -1,36 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+<urlset xmlns="http://sitemaps.org">
   <url>
        <loc>https://quick-retrieval.github.io/snote-retrieval/</loc>
-       <lastmod>2026-09-12T04:29:58+00:00</lastmod>
-       <priority>0.8000</priority>
+       <lastmod>2026-09-12</lastmod>
   </url>
-    
   <url>
        <loc>https://quick-retrieval.github.io/snote-retrieval/blog/transfer-samsung-notes-to-iphone/</loc>
-       <lastmod>2026-09-12T04:29:58+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-
-  <url>
-       <loc>https://quick-retrieval.github.io/snote-retrieval/legal/privacy/</loc>
-       <lastmod>2026-09-12T04:29:58+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://quick-retrieval.github.io/snote-retrieval/legal/refund/</loc>
-       <lastmod>2026-09-12T04:29:58+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://quick-retrieval.github.io/snote-retrieval/legal/data-extraction-disclaimer/</loc>
-       <lastmod>2026-09-12T04:29:58+00:00</lastmod>
-       <priority>0.5120</priority>
-  </url>
-  <url>
-       <loc>https://quick-retrieval.github.io/snote-retrieval/legal/third-party-disclaimer/</loc>
-       <lastmod>2026-09-12T04:29:58+00:00</lastmod>
-       <priority>0.5120</priority>
+       <lastmod>2026-09-18</lastmod>
   </url>
 </urlset>
